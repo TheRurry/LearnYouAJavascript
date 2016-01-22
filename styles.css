@@ -1,12 +1,18 @@
 body {
-    overflow: hidden;
-}
+    overflow: hidden; /*No touchy*/
+    background-color: lightgray;
+} /*You can add stuff to here just leave marked stuff alone*/
 
 #editor {
+    position: relative !important;
+    border: 10px solid gray;
     margin: 0;
-    position: absolute;
+    left: 50%;
+    right: 0;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
-}
+    height: 608px;
+    width: 48%;
+    font-size: large;
+} /*This stuff needs to be left alone*/
+
