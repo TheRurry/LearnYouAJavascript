@@ -2,11 +2,18 @@
 <html>
 <head>
     <title>LearnJS</title>
-    <link rel="stylesheet" type="text/css" href="styles.css"> <!--No touchy-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<pre id="editor"></pre> <!--No touchy-->
-<script src="src-noconflict/ace.js" type="text/javascript"></script> <!--No touchy-->
-<script src="editctrl.js" type="text/javascript"></script> <!--No touchy-->
+<div class="pane-container">
+    <div class="pane-left">
+        <button class = "button" onclick = "eval(editor.getValue())"><span>Execute</span></button>
+    </div>
+    <div class="pane-right">
+        <pre id="editor"></pre>
+    </div>
+</div>
+<script src="src-noconflict/ace.js" type="text/javascript"></script>
+<script src="editctrl.js" type="text/javascript"></script>
 </body>
 </html>
