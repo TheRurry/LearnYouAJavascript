@@ -32,13 +32,13 @@ div.pane-right {
     border: 10px solid gray;
     margin: 0;
     width: 98%;
-    height: 98%;
+    height: 97%;
     font-size: large;
 }
 
 .button{
     position: absolute;
-    bottom: 0;
+    bottom: -10;
     left: 50%;
     margin-left: -75px;
     text-decoration:none;

@@ -3,12 +3,69 @@
 <head>
     <title>LearnJS</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script src="js/acorn_interpreter.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="pane-container">
     <div class="pane-left">
-        <button class = "button" onclick = "eval(editor.getValue())"><span>Execute</span></button>
+
+     	<div id="gameUI"></div>
+
+        <button class = "button" onclick = "myButton()"><span>Execute</span></button>
+
+         <script>
+            function myButton() {
+            	resetGame();
+                window.LoopTrap = 1000;
+				var myInterpreter = new Interpreter(editor.getValue(), initApi);
+				myInterpreter.run();
+            }
+
+            function initApi(interpreter, scope) {
+  				// Add an API function for the alert() block.
+  				var wrapper = function(dist) {
+    				return interpreter.createPrimitive(goForward(dist));
+  				};
+  				interpreter.setProperty(scope, 'goForward',
+      			interpreter.createNativeFunction(wrapper));
+
+  				// Add an API function for the prompt() block.
+  				wrapper = function(dist) {
+    				return interpreter.createPrimitive(goBack(dist));
+  				};
+  				interpreter.setProperty(scope, 'goBack',
+      			interpreter.createNativeFunction(wrapper));
+
+      			wrapper = function(dist) {
+    				return interpreter.createPrimitive(goUp(dist));
+  				};
+  				interpreter.setProperty(scope, 'goUp',
+      			interpreter.createNativeFunction(wrapper));
+
+      			wrapper = function(dist) {
+    				return interpreter.createPrimitive(goDown(dist));
+  				};
+  				interpreter.setProperty(scope, 'goDown',
+      			interpreter.createNativeFunction(wrapper));
+
+      			wrapper = function() {
+    				return interpreter.createPrimitive(playerPosition());
+  				};
+  				interpreter.setProperty(scope, 'playerPosition',
+      			interpreter.createNativeFunction(wrapper));
+			}
+
+            function resetButton() {
+            	resetGame();
+            }
+        </script>
     </div>
+
     <div class="pane-right">
         <pre id="editor"></pre>
     </div>
