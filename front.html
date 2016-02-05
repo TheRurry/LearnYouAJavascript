@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UCL Javascript</title>
+    <title>Script You a Javascript</title>
     <link rel="stylesheet" type="text/css" href="fstyle.css">
 </head>
 <body>
-    <div class="page-slider">
-        <header>
-            <label for="slide-1-trigger">Introduction</label>
-            <label for="slide-2-trigger">Play Game</label>
-            <label for="slide-3-trigger">About Us</label>
-        </header>
-        <input id="slide-1-trigger" type="radio" name="slides" checked>
-        <section class="slide slide-one">
-            <h1>Introduction</h1>
-        </section>
-        <input id="slide-2-trigger" type="radio" name="slides">
-        <section class="slide slide-two">
-            <h1>Play Game</h1>
-        </section>
-        <input id="slide-3-trigger" type="radio" name="slides">
-        <section class="slide slide-three">
-            <h1>About Us</h1>
-        </section>
+    <div id = "topBar">
+        <a href = "front.html" id = "logoTop" class = "button"></a>
+
+        <a href = "front.html" id = "startTop" class = "lightTheme button">
+            <span>Get Started</span>
+        </a>
+
+        <a href = "index.html" id = "playTop" class = "darkTheme button">
+            <span>Play Game</span>
+        </a>
+
+        <a href = "front.html" id = "aboutTop" class = "lightTheme button">
+            <span>About Us</span>
+        </a>
+    </div>
+
+    <div id="paneOne" class = "greyTheme pane">
+        <span id="slogan">Learning code doesn't need to be complicated.</span>
+
+        <div id = "screen"></div>
+
+        <div id = "screenStart" class = "pageButton">
+            <span>Get Started</span>
+        </div>
+
+        <div id = "screenPlay" class = "pageButton">
+            <span>Play Game</span>
+        </div>
+
+        <div id = "screenAbout" class = "pageButton">
+            <span>About Us</span>
+        </div>
+    </div>
+
+    <div id="paneTwo" class = "whiteTheme pane">
+
+    </div>
+
+    <div id="paneThree" class = "greyTheme pane">
+
     </div>
 </body>
 </html>
