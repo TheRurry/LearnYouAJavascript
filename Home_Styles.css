@@ -232,13 +232,9 @@ header > nav > ul > li > nav > ul > li:hover > a {
     margin-left: calc(25%);
 
     color: #fafafa;
-    opacity: 0.3;
+    opacity: 0.5;
     text-align: justify;
     text-justify: inter-word;
-}
-
-#holo:hover {
-    opacity: 0.5;
 }
 
 ::-webkit-scrollbar {
@@ -246,13 +242,15 @@ header > nav > ul > li > nav > ul > li:hover > a {
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(120,120,120,0.8);
     border-radius: 10px;
+    background-color: rgba(100, 100, 100, 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(120,120,120,1.0);
+    background-color: #575757;
 }
 
 div#holo h1 {
