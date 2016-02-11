@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Script You a Javascript</title>
+    <link rel="stylesheet" type="text/css" href="Home_Styles.css">
+</head>
+<body>
+
+    <header>
+        <a onmouseover="on('screenOne')" href = "#" id = "logoTop"></a>
+        <nav>
+            <ul>
+                <li><a id = "start" href="#" onmouseover="on('screenTwo')" href="#" onmouseover="on('screenTwo')" href="#">Get Started</a></li>
+                <li><a id = "about" href="#" onmouseover="on('screenThree')" href="#">About Us</a></li>
+                <li>
+                    <a href="#">Play Game <span class="toggle">Expand</span><span class="caret"></span></a>
+                    <nav>
+                        <ul>
+                            <li><a href="level1.html">New Game</a></li>
+                            <li><a href="#">Level Select</a></li>
+                        </ul>
+                    </nav>
+                </li>
+                <li>
+                    <a href="#">Social Media <span class="toggle">Expand</span><span class="caret"></span></a>
+                    <nav>
+                        <ul>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Google Plus</a></li>
+                        </ul>
+                    </nav>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <img id = "cockpit" src="assets/cockpit_pro_buttons.png" style="position: fixed; left: 0; bottom: 0; width: 100%; height: 70%; z-index:2;" alt="">
+
+    <div id ="cycle" onclick = "counter = (counter + 1) % 3; on(screens[counter]);" onmouseover="cycle()" onmouseout="revert()"></div>
+    <a id ="play" onmouseover="play()" onmouseout="revert()" href="level1.html"></a>
+
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div id="holo">
+        <div id="screenOne">
+            <h1>Welcome to Script You a Javascript.</h1>
+            <p>
+                This website is the home of a game which can teach you the fundamentals
+                of using Javascript through the use of a fun but educational game.
+            </p>
+            <p>
+                To navigate around this website please use the top bar.
+                Placing your cursor on some of the menu items will change the contents of
+                this monitor, even the logo in the top left corner, will bring back up this
+                text.
+            </p>
+            <p>
+                Clicking on any of the menu items will take you to a different website.
+                The logo will also take you back to this home page, and the social media menu
+                item requires you to click on one the options on the menu items.
+            </p>
+            <p>
+                Scrolling down the page will reveal additional information, such as additional
+                websites you can use in order to further your learning and understanding of the
+                Javascript language.
+            </p>
+        </div>
+        <div id="screenTwo">
+            <h1>Why should you use this website?</h1>
+            <p>
+                We have specifically designed this website to help people who have none to limited
+                prior knowledge of Javascript and programming in general.
+            </p>
+            <p>
+                We provide an environment in which you can type your code, which we will help you to
+                write, as well providing detailed documentation in which to help you.
+            </p>
+            <p>
+                This can be done by clicking on the Play Game menu item, which will take you the game screen
+                where you will be able to solve problems and challenges in the game environment with what
+                you have programmed in Javascript.
+            </p>
+            <p>
+                Each level will have tutorial, and a help option available, though we do suggest that
+                you try to find a solution before looking at the help we offer.
+            </p>
+        </div>
+        <div id="screenThree">
+            <h1>Asim Ali</h1>
+            <p>
+                My name is Asim Ali. And I am the fastest man alive. To the outside world I am an ordinary forensic scientist, but secretly with the help of my friends at S.T.A.R. Labs I fight crime and find other metahumans like me. I hunted down the man who killed my mother, but in doing so I opened up our world to new threats, and I am the only one fast enough to stop them. I am the Flashbang.
+            </p>
+            <h1>Hai Felix Xia</h1>
+            <p>
+                I don’t know who you are. I don’t know what you want. If you are looking for the source code, I can tell you I don’t have it. But what I do have are a very particular set of skills, skills I have acquired over a very long career. Skills that make me a nightmare for people like you. If you play the game now, that’ll be the end of it. I will not look for you, I will not pursue you. But if you don’t, I will look for you, I will find you, and I will kill you.
+            </p>
+            <h1>Ryan Collins</h1>
+            <p>
+                My name is Ryan Collins. After five years in hell, I have come home with only one goal - to save my city. But my old approach wasn't enough. I had to become someone else. I had to become something else. I had to become Global Elite.
+            </p>
+            <h1>Marti Serra</h1>
+            <p>
+                Hi there! I’m Marti and I’m from Barcelona, but I study CS at UCL. I’ve always been interested by technology and specially everything related to computers. I love programming because it allows me to develop both my creativity and technical abilities while creating amazing things that people around the world can use. In addition, I enjoy learning very much, so I’m always eager to discover new programming languages.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var counter = 0;
+        var screens = ['screenOne', 'screenTwo', 'screenThree'];
+
+        function cycle() {
+            document.getElementById('cockpit').src = "assets/cockpit_pro_buttons_cycle_h.png";
+        }
+
+        function play() {
+            document.getElementById('cockpit').src = "assets/cockpit_pro_buttons_play_h.png";
+        }
+
+        function revert() {
+            document.getElementById('cockpit').src = "assets/cockpit_pro_buttons.png";
+        }
+
+        function off() {
+            document.getElementById('screenOne').className ='fadeOut';
+            document.getElementById('screenTwo').className ='fadeOut';
+            document.getElementById('screenThree').className ='fadeOut';
+        }
+        function on(className) {
+            off();
+            document.getElementById(className).className ='fadeIn';
+        }
+    </script>
+</body>
+</html>
+<!--Hi, I am a first year computer science student at UCL. My interest in coding stems from the central paradigm that comes with every coding language: a logical thought process. I enjoy learning through doing and playing as I find it more engaging and rewarding. Hence why I believe our interactive learning game is a must-have experience for you to get started in Javascript!-->

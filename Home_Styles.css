@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    min-height: 100%;
+    text-rendering: optimizeLegibility;
+    min-width: 100%;
+}
+
+header {
+    background-color: #444;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 3;
+    position: fixed;
+}
+
+header > .menuDown {
+    box-shadow: 0 3px 5px rgba(0,0,0,.15);
+}
+
+header > .menuUp {
+    box-shadow: none;
+}
+
+header > nav {
+    background-color: #444;
+    display: none;
+    flex: 1;
+    transition: 300ms all ease;
+}
+
+header nav > ul {
+    list-style-type: none;
+}
+
+header nav > ul > li {
+    border-bottom: 1px dotted rgba(0,0,0,.1);
+    position: relative;
+}
+
+header nav > ul > li:last-of-type {
+    border-bottom: none;
+}
+
+header nav > ul > li > a {
+    display: block;
+    color: rgba(0,0,0,.65);
+    font-weight: 700;
+    padding: 1.5rem 0;
+    text-decoration: none;
+    transition: 250ms all ease;
+}
+
+header nav > ul > li > a span.toggle {
+    background-color: rgba(0,0,0,.05);
+    border-radius: 3rem;
+    color: rgba(0,0,0,.25);
+    font-size: 0.75em;
+    font-weight: 500;
+    padding: 2px 8px;
+    text-transform: lowercase;
+}
+
+header nav > ul > li > a span.caret {
+    display: none;
+}
+
+header > nav > ul > li:hover > a {
+    color: #8346c1 /*bar hover*/;
+}
+
+header > nav > ul > li > nav {
+    background-color: rgb(51,51,51);
+    border-radius: 1.5em;
+    box-shadow: 0 2px 8px rgba(0,0,0,.6);
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    right: 5%;
+    width: 90%;
+    z-index: 100;
+}
+
+header > nav > ul > li > nav > ul > li > a {
+    color: rgba(255,255,255,.85);
+    transition: 300ms all ease;
+}
+
+header > nav > ul > li > nav > ul > li:hover > a {
+    background-color: rgba(102,51,153,.6) /*menu hover*/;
+    color: rgba(255,255,255,1);
+}
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+    header > div#logo > div#navToggle {
+        display: none;
+    }
+
+    header {
+        background-color: #fafafa;
+        opacity: 0.5;
+        flex-direction: row;
+        line-height: 90px;
+        padding: 0 3rem;
+        position: fixed;
+        text-align: left;
+        width: 100%;
+        z-index: 3;
+    }
+
+    /*header:hover {
+        opacity: 0.5;
+    }*/
+
+    header > a#logoTop {
+        border: 0;
+        background: url("assets/home_logo.png") no-repeat;
+        background-size: 100% 100%;
+        width: 240px;
+        height: 35px;
+        display: block;
+        margin-top: 27px;
+        margin-left: 0;
+    }
+
+    header > a#logoTop:hover {
+        background: url("assets/home_logo_alt.png") no-repeat;
+        background-size: 100% 100%;
+        width: 240px;
+        height: 35px;
+    }
+
+    header > nav {
+        background-color: transparent;
+        display: block;
+    }
+
+    header > nav > ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+    }
+
+    header nav > ul > li {
+        border-bottom: none;
+    }
+
+    header nav > ul > li > a {
+        padding: 0 1.25rem;
+    }
+
+    header nav > ul > li > a span.toggle {
+        display: none;
+    }
+
+    header nav > ul > li > a span.caret {
+        border: 4px solid transparent;
+        border-top-color: rgba(0, 0, 0, .65) /*menu arrow colour*/;
+        border-radius: 1px;
+        content: "";
+        display: inline-block;
+        height: 0;
+        margin: 0 0 0 .25rem;
+        transition: 250ms all ease;
+        width: 0;
+        vertical-align: middle;
+    }
+
+    header nav > ul > li:hover > a span.caret {
+        border-top-color: #8346c1 /*menu arrow hover colour*/;
+        transform: rotate(270deg);
+    }
+
+    header > nav > ul > li:hover > nav {
+        background-color: rgb(131,70,193);
+        border-radius: .25em;
+        box-shadow: 0 2px 8px rgba(0,0,0,.6) /*menu drop down shadow*/;
+        display: block;
+        line-height: 3em;
+        right: -50%;
+        width: 196px;
+    }
+}
+
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+.stars, .twinkling {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.stars {
+    background:#000 url("assets/stars.png") repeat top center;
+    z-index:0;
+}
+
+.twinkling {
+    background:transparent url("assets/twinkling.png") repeat top center;
+    z-index: 1;
+    animation:move-twink-back 200s linear infinite;
+}
+
+#holo {
+    font: 1.2em sans-serif;
+    width: 50vw;
+    height: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
+    z-index: 3;
+    position: fixed;
+    margin-top: 120px;
+    margin-left: calc(25%);
+
+    color: #fafafa;
+    opacity: 0.3;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+#holo:hover {
+    opacity: 0.5;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+div#holo h1 {
+    margin-left: 10px;
+    color: #e5c3ff;
+}
+
+div#holo p {
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div#screenOne, div#screenTwo, div#screenThree{
+    display:block;
+    position:absolute;
+}
+
+div#screenTwo, div#screenThree {
+    opacity: 0;
+}
+
+div.fadeIn {
+    animation: appear 0s;
+    animation-fill-mode: forwards;
+}
+
+div.fadeOut {
+    animation: fade 0s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1.0;
+    }
+
+    100% {
+        opacity: 0.0;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+#cycle {
+    position: absolute;
+    width: 40vh;
+    height: 10vh;
+    z-index: 5;
+    margin-top: 78vh;
+    margin-left: calc(50% - 40vh);
+}
+
+#play {
+    position: absolute;
+    width: 40vh;
+    height: 10vh;
+    z-index: 5;
+    margin-top: 78vh;
+    margin-left: 50%;
+}
