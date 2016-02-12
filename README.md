@@ -2,51 +2,55 @@
 
 Target age: 11-13
 
+---
 
 Materials, software, equipment needed for the project:
 
 You only require the website to be loaded up on a local server, you can easily do this by:
 
-Navigating to the “LearnYouaJavascript” directory in the terminal.
+-Navigating to the “LearnYouaJavascript” directory in the terminal.
 
-Type “python -V”.
+-Type “python -V”.
 
-If there is no version of python, install the latest version of python 2 or 3.
+-If there is no version of python, install the latest version of python 2 or 3.
 
-If it says python 2: type “python -m SimpleHTTPServer”.
+-If it says python 2: type “python -m SimpleHTTPServer”.
 
-If it says python 3: type “python -m http.server”.
+-If it says python 3: type “python -m http.server”.
 
-Put “http://localhost:8000/” in your browser’s address bar (works best on chrome).
+-Put “http://localhost:8000/” in your browser’s address bar (works best on chrome).
 
-Click Home_Page.html.
+-Click Home_Page.html.
 
+---
 
 The objective of the project and a short description:
 
 The aim of ScriptYouAJavascript is to showcase fundamental programming techniques to students who have very little to no programming experience. This is done through a series of very fun and interactive puzzles whereby students are tasked with programming a spaceship using javascript. Programming principles such as variables, conditional statements, loops and functions are all taught and after completing the game users will have the necessary skills to program functions of their own in javascript.
 
+---
 
 A list of the tasks you have completed and a list of the tasks outstanding:
 
 Done:
 
-Basic website construction.
+-Basic website construction.
 
-Javascript interpreter working and linked to player animations.
+-Javascript interpreter working and linked to player animations.
 
-First 3 levels implemented.
+-First 3 levels implemented.
 
-Artwork finished.
+-Artwork finished.
 
 To do:
 
-Design levels covering more advanced topics (if, for, while, arrays...).
+-Design levels covering more advanced topics (if, for, while, arrays...).
 
-Design levels where users create their own functions?
+-Design levels where users create their own functions?
 
-User input / output? (confirm, prompt…etc.).
+-User input / output? (confirm, prompt…etc.).
 
+---
 
 About us:
 
@@ -66,6 +70,7 @@ Hai “Felix” Xia
 
 Hi, I am a first year computer science student at UCL. My interest in coding stems from the central paradigm that comes with every coding language: a logical thought process. I enjoy learning through doing and playing as I find it more engaging and rewarding. Hence why I believe our interactive learning game is a must-have experience for you to get started in Javascript!
 
+---
 
 Mark Allocation:
 
@@ -77,6 +82,7 @@ Marti Serra Vivancos: 27
 
 Hai “Felix” Xia: 26
 
+---
 
 Image Sources:
 
