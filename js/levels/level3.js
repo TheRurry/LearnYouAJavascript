@@ -179,3 +179,16 @@ function momeDirections(x, y) {
     return time+500;
 }
 
+function helper() {
+    console.log("Tutorial Loaded")
+
+    swal({
+        title: "Lesson 3",
+        text: "The collectible may look blocked, but don't worry you can still reach it. You may notice that there is a wormhole in the boxed off area with the collectible, and there is another to the left. These wormholes are connected, try going into the one accessible to you!",
+        type: "info",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Got it!",
+        closeOnConfirm: true }, null);
+}
+

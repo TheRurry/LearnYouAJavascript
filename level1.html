@@ -23,16 +23,15 @@
         <ul>
             <li><a href="#">Instructions</a>
                 <ul>
-                    <li><a href="#">hold alt-f4</a></li>
+                    <li><a href="#">Press the home button to return to the home page. Press the run button to execute the code you have written. Press the help button to load up the tutorial for the level.</a></li>
                 </ul>
             </li>
 
             <li><a href="#">Select lesson</a>
                 <ul>
-                    <li><a href="level1.html">1. Getting started with programming</a></li>
-                    <li><a href="level2.html">2. Movement using functions</a></li>
-                    <li><a href="level3.html">3. Variables</a></li>
-                    <li><a href="#">4. Decisions, decisions</a></li>
+                    <li><a href="level1.html">1. Getting Started!</a></li>
+                    <li><a href="level2.html">2. Avoiding Obstacles!</a></li>
+                    <li><a href="level3.html">3. Wormholes Ahead!</a></li>
                 </ul>
             </li>
 
@@ -89,16 +88,12 @@
             <li><a href="#">Functions library</a>
                 <ul>
                     <li><a href="#">ScriptYouAJavascript inbuilt functions</a></li>
-                    <li><a href="#">forward(d); <br> -move spaceship d units up</a></li>
-                    <li><a href="#">turnLeft(); <br> -turn spaceship 90 degrees to the left</a></li>
-                    <li><a href="#">turnRight(); <br> -turn spaceship 90 degrees to the right</a></li>
-                    <li><a href="#">left(d); <br> -strafe left by d units</a></li>
-                    <li><a href="#">right(d); <br> -strafe right by d units</a></li>
-                    <li><a href="#">astroidBlock(); <br> -returns true if there is an asteroid 1 unit infront of ship</a></li>
-                    <li><a href="#">shoot(); <br> -shoots projectile in the direction player is facing</a></li>
+                    <li><a href="#">goForward(d); <br> -move spaceship d units up</a></li>
+                    <li><a href="#">goBack(d); <br> -move spaceship d units down</a></li>
+                    <li><a href="#">goLeft(d); <br> -strafe left by d units</a></li>
+                    <li><a href="#">goRight(d); <br> -strafe right by d units</a></li>
                 </ul>
             </li>
-
                     <li><a href="#">Loops</a></li>
                 </ul>
             </div>
@@ -111,15 +106,15 @@
             </div>
         </div>
 
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script>
-        $(document).ready(function() {
-          $("[data-toggle]").click(function() {
-            var toggle_el = $(this).data("toggle");
-            $(toggle_el).toggleClass("open-sidebar");
-          });
-        });
-        </script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>
+    $(document).ready(function() {
+      $("[data-toggle]").click(function() {
+        var toggle_el = $(this).data("toggle");
+        $(toggle_el).toggleClass("open-sidebar");
+      });
+    });
+    </script>
         
     <div class="pane-left">
         <div id="gameUI"></div>
@@ -127,7 +122,6 @@
         <div style="cursor:pointer;" onclick="helper()" class="helpButton"></div>
         <div style="cursor:pointer;" onclick="run()" class="runButton"></div>
         <a href="Home_Page.html" class="homeButton"></a>
-
 
         <script type="text/javascript">
             function run() {

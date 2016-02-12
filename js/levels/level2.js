@@ -149,3 +149,16 @@ function momeDirections(x, y) {
     return time+500;
 }
 
+function helper() {
+    console.log("Tutorial Loaded")
+
+    swal({
+        title: "Lesson 2",
+        text: "You can now use goLeft(), goRight(), and goBack() to navigate around the white obstacles, be warned that touching these obstacles will make the level restart and wipe your current code, so keep a back up. You can find out more about these new functions in the documentation.",
+        type: "info",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Got it!",
+        closeOnConfirm: true }, null);
+}
+

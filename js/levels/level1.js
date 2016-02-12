@@ -111,3 +111,15 @@ function momeDirections(x, y) {
     return time+500;
 }
 
+function helper() {
+    console.log("Tutorial Loaded")
+
+    swal({
+        title: "Lesson 1",
+        text: "Use the 'goForward' to move the spaceship towards the collectible, in order to proceed to the next level. The parameter of the function, is how many units to move up by. You need to find the right distance. Click the icon in the top left for the documentation in order to get more information. \n\ngoForward(10);\nThis will make the spaceship go 10 spaces forward.",
+        type: "info",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Got it!",
+        closeOnConfirm: true }, null);
+}
