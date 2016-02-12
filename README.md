@@ -86,8 +86,6 @@ Hai “Felix” Xia: 26
 
 Image Sources:
 
-The twinkling.png and stars.png images were used to create the background for the website and were from the following tutorials: https://www.script-tutorials.com/demos/360/images/twinkling.png
-
-https://www.script-tutorials.com/demos/360/images/stars.png
+The twinkling.png and stars.png images were used to create the background for the website and were from the following tutorials: https://www.script-tutorials.com/demos/360/images/twinkling.png, and https://www.script-tutorials.com/demos/360/images/stars.png
 
 The png files beginning with cockpit_pro are from the video game Star Citizen 2016 and were created by cloud imperium games, taken from: http://m.imgur.com/a/a3r2N
