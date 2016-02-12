@@ -1,5 +1,4 @@
-# LearnYouAJavascript
-Project title: Script You a Javascript
+# ScriptYouAJavascript
 
 Target age: 11-13
 
@@ -51,7 +50,7 @@ Hence why I believe our interactive learning game is a must-have experience for 
 
 
 Mark Allocation:
-Asim Ali: 23
-Ryan Collins: 24
-Marti Serra Vivancos: 27
-Hai “Felix” Xia: 26
+Asim Ali: 23,
+Ryan Collins: 24,
+Marti Serra Vivancos: 27,
+Hai “Felix” Xia: 26.
