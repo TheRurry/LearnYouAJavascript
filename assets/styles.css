@@ -29,27 +29,64 @@ div.pane-right {
 }
 
 #editor {
-    border: 10px solid gray;
+    border: 1px solid gray;
     margin: 0;
-    width: 98%;
-    height: 97%;
+    width: 100%;
+    height: 100%;
     font-size: large;
 }
 
 .runButton {
     position: absolute;
-    bottom: -10;
     left: 50%;
     margin-left: -40px;
-    background: url("button.png") no-repeat;
+    background: url("button_run.png") no-repeat;
     background-size: 100% 100%;
-    background-position: 50% 50%;
+    /*background-position: 50% 50%;*/
     width: 80px;
     height: 80px;
 }
+
 .runButton:hover {
-    background: url("button_h.png") no-repeat;
+    background: url("button_run_h.png") no-repeat;
     background-size: 100% 100%;
-    idth: 80px;
+    width: 80px;
+    height: 80px;
+}​
+
+.helpButton {
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    background: url("button_help.png") no-repeat;
+    background-size: 100% 100%;
+    /*background-position: 50% 50%;*/
+    width: 80px;
+    height: 80px;
+ }
+
+.helpButton:hover {
+    background: url("button_help_h.png") no-repeat;
+    background-size: 100% 100%;
+    width: 80px;
+    height: 80px;
+}​
+
+.homeButton {
+    position: absolute;
+    display: block;
+    left: 50%;
+    margin-left: -40px;
+    background: url("button_home.png") no-repeat;
+    background-size: 100% 100%;
+    /*background-position: 50% 50%;*/
+    width: 80px;
+    height: 80px;
+ }
+
+#homeButton:hover {
+    background: url("button_help_h.png") no-repeat;
+    background-size: 100% 100%;
+    width: 80px;
     height: 80px;
 }​
