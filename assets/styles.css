@@ -43,7 +43,7 @@ div.pane-right {
 .runButton {
     position: absolute;
     left: 50%;
-    margin-left: -130px;
+    margin-left: -40px;
     background: url("button_run.png") no-repeat;
     background-size: 100% 100%;
     width: 80px;
@@ -78,7 +78,7 @@ div.pane-right {
     position: absolute;
     display: block;
     left: 50%;
-    margin-left: -40px;
+    margin-left: -130px;
     background: url("button_home.png") no-repeat;
     background-size: 100% 100%;
     width: 80px;
