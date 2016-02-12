@@ -2,6 +2,7 @@
 
 Target age: 11-13
 
+
 Materials, software, equipment needed for the project:
 
 You only require the website to be loaded up on a local server, you can easily do this by:
@@ -20,9 +21,11 @@ Put “http://localhost:8000/” in your browser’s address bar (works best on 
 
 Click Home_Page.html.
 
+
 The objective of the project and a short description:
 
 The aim of ScriptYouAJavascript is to showcase fundamental programming techniques to students who have very little to no programming experience. This is done through a series of very fun and interactive puzzles whereby students are tasked with programming a spaceship using javascript. Programming principles such as variables, conditional statements, loops and functions are all taught and after completing the game users will have the necessary skills to program functions of their own in javascript.
+
 
 A list of the tasks you have completed and a list of the tasks outstanding:
 
@@ -43,6 +46,7 @@ Design levels covering more advanced topics (if, for, while, arrays...).
 Design levels where users create their own functions?
 
 User input / output? (confirm, prompt…etc.).
+
 
 About us:
 
@@ -72,6 +76,7 @@ Ryan Collins: 24
 Marti Serra Vivancos: 27
 
 Hai “Felix” Xia: 26
+
 
 Image Sources:
 
