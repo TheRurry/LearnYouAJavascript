@@ -4,7 +4,7 @@ function runGame()
 {
     resetGame();
     interpreter = null;
-    var interpreter = new Interpreter(editor.getValue(), initApi);
+    interpreter = new Interpreter(editor.getValue(), initApi);
     nextStep(interpreter);
 }
 

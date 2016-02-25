@@ -5,13 +5,12 @@ function preload() {
     game.load.image('collectable', 'js/levels/assets/collectable2.png');
     game.load.image('planet', 'js/levels/assets/planet1.png');
     game.load.image('stars', 'js/levels/assets/starmap.png')
-
 }
+
 var player
 var move;
 
 var collectable;
-var completed = 0;
 
 var speed = 0.2;
 
@@ -62,9 +61,10 @@ function areClose(agent, objective, threshold)
 }
 
 function resetGame() {
+    console.log(game.tweens.getAll())
+    player.reset();
     move.pause();
     game.tweens.removeAll();
-    move = game.add.tween(player);
     player.x = initialX;
     player.y = initialY;
 }
