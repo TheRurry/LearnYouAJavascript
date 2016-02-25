@@ -15,6 +15,8 @@ var collectable;
 var warmhole1;
 var warmhole2;
 
+var completed = 0;
+
 var speed = 0.2;
 
 var initialX = 340;
@@ -77,7 +79,7 @@ function update() {
         player.position.y = warmhole2.position.y;
     }
 
-    if (areClose(player, collectable, 20)) {
+    if (areClose(player, collectable, 20) && completed++ == 0) {
         didCollect();
     }
 
