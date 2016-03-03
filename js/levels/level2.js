@@ -47,9 +47,11 @@ function create() {
 
     var graphics = game.add.graphics(0, 0);
     graphics.beginFill(0xFFFFFF);
-    graphics.drawRect(wall1[0], wall1[1], wall1[2], wall1[3]);
-    graphics.drawRect(wall2[0], wall2[1], wall2[2], wall2[3]);
-    graphics.drawRect(wall3[0], wall3[1], wall3[2], wall3[3]);
+
+    for (var i = 0; i<walls.length; i++) {
+        graphics.drawRect(walls[i][0], walls[i][1], walls[i][2], walls[i][3]);
+    }
+    
     graphics.endFill();
 }
 

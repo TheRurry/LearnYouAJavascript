@@ -27,7 +27,7 @@ var wall1 = [260, 370, wallWidth, 300]
 var wall2 = [260, 370, 200, wallWidth]
 var wall3 = [450, 0, wallWidth, 150]
 var wall4 = [450, 150, 200, wallWidth]
-
+var walls = [wall, wall2, wall3, wall4]
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -62,10 +62,9 @@ function create() {
 
     var graphics = game.add.graphics(0, 0);
     graphics.beginFill(0xFFFFFF);
-    graphics.drawRect(wall1[0], wall1[1], wall1[2], wall1[3]);
-    graphics.drawRect(wall2[0], wall2[1], wall2[2], wall2[3]);
-    graphics.drawRect(wall3[0], wall3[1], wall3[2], wall3[3]);
-    graphics.drawRect(wall4[0], wall4[1], wall4[2], wall4[3]);
+    for (var i = 0; i<walls.length; i++) {
+        graphics.drawRect(walls[i][0], walls[i][1], walls[i][2], walls[i][3]);
+    }
     graphics.endFill();
 }
 
