@@ -83,100 +83,25 @@ function update() {
         didCollect();
     }
 
-    if (player.position.x>wall1[0] && player.position.x<wall1[0]+wall1[2] && 
+    if (player.position.x>wall1[0] && player.position.x<wall1[0]+wall1[2] &&
         player.position.y>wall1[1] && player.position.y<wall1[1]+wall1[3]) {
         touchedWall();
     }
-    if (player.position.x>wall2[0] && player.position.x<wall2[0]+wall2[2] && 
+    if (player.position.x>wall2[0] && player.position.x<wall2[0]+wall2[2] &&
         player.position.y>wall2[1] && player.position.y<wall2[1]+wall2[3]) {
         touchedWall();
     }
-    if (player.position.x>wall3[0] && player.position.x<wall3[0]+wall3[2] && 
+    if (player.position.x>wall3[0] && player.position.x<wall3[0]+wall3[2] &&
         player.position.y>wall3[1] && player.position.y<wall3[1]+wall3[3]) {
         touchedWall();
     }
-    if (player.position.x>wall4[0] && player.position.x<wall4[0]+wall4[2] && 
+    if (player.position.x>wall4[0] && player.position.x<wall4[0]+wall4[2] &&
         player.position.y>wall4[1] && player.position.y<wall4[1]+wall4[3]) {
         touchedWall();
     }
 
     warmhole1.angle += 1;
     warmhole2.angle += 1;
-}
-
-function touchedWall()
-{
-    didFailLevel();
-    move.pause();
-}
-
-function didCollect()
-{
-    collectable.kill();
-    didCompleteLevel();
-    move.pause();
-}
-
-function areClose(agent, objective, threshold)
-{
-    return Math.sqrt(Math.pow(objective.position.x-agent.position.x, 2)
-    + Math.pow(objective.position.y-agent.position.y, 2)) <= threshold;
-}
-
-function collidedWall(wall)
-{
-    console.log("hdad")
-    
-}
-
-function resetGame() {
-    move.pause();
-    game.tweens.removeAll();
-    move = game.add.tween(player);
-    player.x = initialX;
-    player.y = initialY;
-}
-
-function goForward(distance, callback) {    
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, -distance);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goRight(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(distance, 0);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goLeft(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(-distance, 0);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goBack(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, distance);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function momeDirections(x, y) {
-    move.pause();
-    move = game.add.tween(player);
-    var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    move.to({x: player.x+x*10, y: player.y+y*10}, time, Phaser.Easing.In);
-    move.start();
-
-    return time+500;
 }
 
 function helper() {
@@ -192,3 +117,39 @@ function helper() {
         closeOnConfirm: true }, null);
 }
 
+function didCollect()
+{
+    collectable.kill();
+    didCompleteLevel();
+    move.pause();
+}
+
+function touchedWall()
+{
+    didFailLevel();
+    move.pause();
+}
+
+function areClose(agent, objective, threshold)
+{
+    return Math.sqrt(Math.pow(objective.position.x-agent.position.x, 2)
+    + Math.pow(objective.position.y-agent.position.y, 2)) <= threshold;
+}
+
+function resetGame() {
+    move.pause();
+    game.tweens.removeAll();
+    move = game.add.tween(player);
+    player.x = initialX;
+    player.y = initialY;
+}
+
+function momeDirections(x, y) {
+    move.pause();
+    move = game.add.tween(player);
+    var time = (Math.sqrt(x*x+y*y)*10)/speed;
+    move.to({x: player.x+x*10, y: player.y+y*10}, time, Phaser.Easing.In);
+    move.start();
+
+    return time+500;
+}

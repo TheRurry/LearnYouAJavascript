@@ -61,18 +61,31 @@ function update() {
         didCollect();
     }
 
-    if (player.position.x>wall1[0] && player.position.x<wall1[0]+wall1[2] && 
+    if (player.position.x>wall1[0] && player.position.x<wall1[0]+wall1[2] &&
         player.position.y>wall1[1] && player.position.y<wall1[1]+wall1[3]) {
         touchedWall();
     }
-    if (player.position.x>wall2[0] && player.position.x<wall2[0]+wall2[2] && 
+    if (player.position.x>wall2[0] && player.position.x<wall2[0]+wall2[2] &&
         player.position.y>wall2[1] && player.position.y<wall2[1]+wall2[3]) {
         touchedWall();
     }
-    if (player.position.x>wall3[0] && player.position.x<wall3[0]+wall3[2] && 
+    if (player.position.x>wall3[0] && player.position.x<wall3[0]+wall3[2] &&
         player.position.y>wall3[1] && player.position.y<wall3[1]+wall3[3]) {
         touchedWall();
     }
+}
+
+function helper() {
+    console.log("Tutorial Loaded")
+
+    swal({
+        title: "Lesson 2",
+        text: "You can now use goLeft(), goRight(), and goBack() to navigate around the white obstacles, be warned that touching these obstacles will make the level restart and wipe your current code, so keep a back up. You can find out more about these new functions in the documentation.",
+        type: "info",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Got it!",
+        closeOnConfirm: true }, null);
 }
 
 function didCollect()
@@ -94,49 +107,12 @@ function areClose(agent, objective, threshold)
     + Math.pow(objective.position.y-agent.position.y, 2)) <= threshold;
 }
 
-function collidedWall(wall)
-{
-    console.log("hdad")
-}
-
 function resetGame() {
     move.pause();
     game.tweens.removeAll();
     move = game.add.tween(player);
     player.x = initialX;
     player.y = initialY;
-}
-
-function goForward(distance, callback) {    
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, -distance);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goRight(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(distance, 0);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goLeft(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(-distance, 0);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goBack(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, distance);
-    callback(false);
-
-    setTimeout(callback, time, true);
 }
 
 function momeDirections(x, y) {
@@ -148,17 +124,3 @@ function momeDirections(x, y) {
 
     return time+500;
 }
-
-function helper() {
-    console.log("Tutorial Loaded")
-
-    swal({
-        title: "Lesson 2",
-        text: "You can now use goLeft(), goRight(), and goBack() to navigate around the white obstacles, be warned that touching these obstacles will make the level restart and wipe your current code, so keep a back up. You can find out more about these new functions in the documentation.",
-        type: "info",
-        showCancelButton: false,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Got it!",
-        closeOnConfirm: true }, null);
-}
-

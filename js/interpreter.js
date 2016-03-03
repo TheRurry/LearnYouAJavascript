@@ -1,7 +1,7 @@
 var canRun = true;
 var interpreter = null;
 
-function runGame() 
+function runGame()
 {
     resetGame();
     interpreter = null;
@@ -9,14 +9,14 @@ function runGame()
     nextStep(interpreter);
 }
 
-function nextStep(interpreter) 
+function nextStep(interpreter)
 {
     if (canRun && interpreter.step()) {
     }
     window.setTimeout(nextStep, 0, interpreter);
 }
 
-function initApi(interpreter, scope) 
+function initApi(interpreter, scope)
 {
     var wrapper = function(dist) {
         return interpreter.createPrimitive(goForward(dist, function(finished){

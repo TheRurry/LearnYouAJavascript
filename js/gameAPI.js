@@ -1,6 +1,6 @@
 var canRun = true;
 
-function runGame() 
+function runGame()
 {
     resetGame();
     interpreter = null;
@@ -12,24 +12,24 @@ function didCompleteLevel()
 {
     console.log("Level Complete!");
 
-    swal({ 
-        title: "You've successfully completed this level!", 
+    swal({
+        title: "You've successfully completed this level!",
         text: "Do you want to go to the next one?",
-        type: "success",   
-        showCancelButton: false, 
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, go!",   
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, go!",
         closeOnConfirm: true }, null);
 }
 
-function nextStep(interpreter) 
+function nextStep(interpreter)
 {
     if (canRun && interpreter.step()) {
     }
     window.setTimeout(nextStep, 0, interpreter);
 }
 
-function initApi(interpreter, scope) 
+function initApi(interpreter, scope)
 {
     var wrapper = function(dist) {
         return interpreter.createPrimitive(goForward(dist, function(finished){
@@ -78,4 +78,41 @@ function initApi(interpreter, scope)
     };
     interpreter.setProperty(scope, 'playerY',
     interpreter.createNativeFunction(wrapper));
+}
+
+function goForward(distance, callback) {
+    distance = typeof distance !== 'undefined' ? distance : 5;
+    var time = momeDirections(0, -distance);
+    callback(false);
+
+    setTimeout(callback, time, true);
+}
+
+function goRight(distance, callback) {
+    distance = typeof distance !== 'undefined' ? distance : 5;
+    var time = momeDirections(distance, 0);
+    callback(false);
+
+    setTimeout(callback, time, true);
+}
+
+function goLeft(distance, callback) {
+    distance = typeof distance !== 'undefined' ? distance : 5;
+    var time = momeDirections(-distance, 0);
+    callback(false);
+
+    setTimeout(callback, time, true);
+}
+
+function goBack(distance, callback) {
+    distance = typeof distance !== 'undefined' ? distance : 5;
+    var time = momeDirections(0, distance);
+    callback(false);
+
+    setTimeout(callback, time, true);
+}
+
+function collidedWall(wall)
+{
+    console.log("hdad")
 }

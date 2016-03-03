@@ -48,10 +48,29 @@ function update() {
     }
 }
 
+function helper() {
+    console.log("Tutorial Loaded")
+
+    swal({
+        title: "Lesson 1",
+        text: "Use the 'goForward' to move the spaceship towards the collectible, in order to proceed to the next level. The parameter of the function, is how many units to move up by. You need to find the right distance. Click the icon in the top left for the documentation in order to get more information. \n\ngoForward(10);\nThis will make the spaceship go 10 spaces forward.",
+        type: "info",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Got it!",
+        closeOnConfirm: true }, null);
+}
+
 function didCollect()
 {
     collectable.kill();
     didCompleteLevel();
+    move.pause();
+}
+
+function touchedWall()
+{
+    didFailLevel();
     move.pause();
 }
 
@@ -69,38 +88,6 @@ function resetGame() {
     player.y = initialY;
 }
 
-function goForward(distance, callback) {    
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, -distance);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goRight(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(distance, 0);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goLeft(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(-distance, 0);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
-function goBack(distance, callback) {
-    distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, distance);
-    callback(false);
-
-    setTimeout(callback, time, true);
-}
-
 function momeDirections(x, y) {
     move.pause();
     move = game.add.tween(player);
@@ -109,17 +96,4 @@ function momeDirections(x, y) {
     move.start();
 
     return time+500;
-}
-
-function helper() {
-    console.log("Tutorial Loaded")
-
-    swal({
-        title: "Lesson 1",
-        text: "Use the 'goForward' to move the spaceship towards the collectible, in order to proceed to the next level. The parameter of the function, is how many units to move up by. You need to find the right distance. Click the icon in the top left for the documentation in order to get more information. \n\ngoForward(10);\nThis will make the spaceship go 10 spaces forward.",
-        type: "info",
-        showCancelButton: false,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Got it!",
-        closeOnConfirm: true }, null);
 }
