@@ -1,4 +1,5 @@
 var canRun = true;
+var interpreter = null;
 
 function runGame() 
 {
