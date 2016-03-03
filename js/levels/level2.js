@@ -63,17 +63,11 @@ function update() {
         didCollect();
     }
 
-    if (player.position.x>wall1[0] && player.position.x<wall1[0]+wall1[2] && 
-        player.position.y>wall1[1] && player.position.y<wall1[1]+wall1[3]) {
-        touchedWall();
-    }
-    if (player.position.x>wall2[0] && player.position.x<wall2[0]+wall2[2] && 
-        player.position.y>wall2[1] && player.position.y<wall2[1]+wall2[3]) {
-        touchedWall();
-    }
-    if (player.position.x>wall3[0] && player.position.x<wall3[0]+wall3[2] && 
-        player.position.y>wall3[1] && player.position.y<wall3[1]+wall3[3]) {
-        touchedWall();
+    for (var i = 0; i<walls.length; i++) {
+        if (player.position.x>walls[i][0] && player.position.x<walls[i][0]+walls[i][2] && 
+            player.position.y>walls[i][1] && player.position.y<walls[i][1]+walls[i][3]) {
+                touchedWall();
+        }
     }
 }
 
