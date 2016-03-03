@@ -42,6 +42,7 @@ function create() {
 function update() {
     if (player.x < 0 || player.x > game.world.width || player.y < 0 || player.y > game.world.height) {
         didFailLevel();
+        console.log("Out")
     }
     if (areClose(player, collectable, 20) && completed++ == 0) {
         didCollect();
