@@ -112,6 +112,9 @@
         var toggle_el = $(this).data("toggle");
         $(toggle_el).toggleClass("open-sidebar");
       });
+
+        editor.setValue(localStorage.code)
+
     });
     </script>
 
@@ -129,6 +132,7 @@
 
             function didCompleteLevel()
             {
+                localStorage.code = "";
                 console.log("Level Complete!");
                 swal({ 
                     title: "You've successfully completed level 3!", 
@@ -145,7 +149,7 @@
 
             function didFailLevel()
             {
-                console.log("Level Complete!");
+                localStorage.code = editor.getValue();
                 swal({ 
                     title: "You didn't complete this level :(", 
                     text: "You can do it, keep trying!!",
