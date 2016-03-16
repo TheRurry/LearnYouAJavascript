@@ -28,6 +28,7 @@ var wall2 = [260, 370, 200, wallWidth]
 var wall3 = [450, 0, wallWidth, 150]
 var wall4 = [450, 150, 200, wallWidth]
 var walls = [wall, wall2, wall3, wall4]
+
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -61,7 +62,7 @@ function create() {
     warmhole2.scale.setTo(0.1, 0.1);
 
     var graphics = game.add.graphics(0, 0);
-    graphics.beginFill(0xFFFFFF);
+    graphics.beginFill(0xffffff);
     for (var i = 0; i<walls.length; i++) {
         graphics.drawRect(walls[i][0], walls[i][1], walls[i][2], walls[i][3]);
     }
