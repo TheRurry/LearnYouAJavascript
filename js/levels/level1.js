@@ -98,27 +98,3 @@ function rotatePlayer(clockwise) {
     direction = mod(direction + clockwise, 4);
     player.angle += clockwise*90;
 }
-
-function mod(a, b)
-{
-    var r = a % b;
-    return r < 0 ? r + b : r;
-}
-
-function getXYFromDirection() {
-    switch(direction) {
-        case 0:
-            return [0, -1];
-            break;
-        case 1:
-            return [1, 0];
-            break;
-        case 2:
-            return [0, 1];
-            break;
-        case 3:
-            return [-1, 0];
-            break;
-    }
-}
-
