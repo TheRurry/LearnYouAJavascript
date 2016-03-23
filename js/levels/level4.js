@@ -16,12 +16,11 @@ var temp;
 
 var collectable;
 var relics;
+var wormholes;
 
-var warmhole1;
-var warmhole2;
 
 var completed = 0;
-var goal = 3; //change this to amount of collectables in level.
+var goal = 3;
 
 var speed = 0.2;
 var initialX = 350;
@@ -38,115 +37,37 @@ function create() {
     player.scale.setTo(0.07, 0.07);
     move = game.add.tween(player);
 
+    //collectables
     relics = game.add.group();
+    newSprite(350, 390, 0.07, 0.07, 'collectable', relics);
+    newSprite(450, 280, 0.07, 0.07, 'collectable', relics);
+    newSprite(450, 190, 0.07, 0.07, 'collectable', relics);
 
-    //Collectable
-    collectable = game.add.sprite(350, 390, 'collectable');
-    collectable.anchor.setTo(0.5, 0.5);
-    collectable.enableBody = true;
-    collectable.scale.setTo(0.07, 0.07);
-    relics.add(collectable);
+    //wormholes
+    wormholes = game.add.group();
+    newSprite(550, 275, 0.1, 0.1, 'hole', wormholes);
+    newSprite(game.world.width-350, 300, 0.1, 0.1, 'hole', wormholes);
 
-    //Collectable
-    collectable = game.add.sprite(450, 280, 'collectable');
-    collectable.anchor.setTo(0.5, 0.5);
-    collectable.enableBody = true;
-    collectable.scale.setTo(0.07, 0.07);
-    relics.add(collectable);
-
-    //Collectable
-    collectable = game.add.sprite(450, 190, 'collectable');
-    collectable.anchor.setTo(0.5, 0.5);
-    collectable.enableBody = true;
-    collectable.scale.setTo(0.07, 0.07);
-    relics.add(collectable);
-
-    //wetholes
-    warmhole1 = game.add.sprite(550, 275, 'hole');
-    warmhole1.enableBody = true;
-    warmhole1.anchor.setTo(0.5, 0.5);
-    warmhole1.scale.setTo(0.1, 0.1);
-
-    warmhole2 = game.add.sprite(game.world.width-350, 300, 'hole');
-    warmhole2.enableBody = true;
-    warmhole2.anchor.setTo(0.5, 0.5);
-    warmhole2.scale.setTo(0.1, 0.1);
-
+    //walls
     walls = game.add.group();
+    newSprite(300, 400, 0.05, 0.3, 'test', walls);
+    newSprite(400, 450, 0.05, 0.05, 'test', walls);
+    newSprite(350, 350, 0.3, 0.05, 'testo', walls);
+    newSprite(450, 430, 0.3, 0.05, 'testo', walls);
+    newSprite(400, 285, 0.05, 0.3, 'test', walls);
+    newSprite(500, 365, 0.05, 0.3,  'test', walls);
+    newSprite(450, 235, 0.3, 0.05,  'testo', walls);
+    newSprite(550, 315, 0.3, 0.05,  'testo', walls);
+    newSprite(300, 200, 0.05, 0.3,  'test', walls);
+    newSprite(350, 150, 0.3, 0.05,  'testo', walls);
+}
 
-    //Test object
-    temp = game.add.sprite(300, 400, 'test');
+function newSprite(sprX, sprY, widthScale, heightScale, image, spriteGroup) {
+    temp = game.add.sprite(sprX, sprY, image);
     temp.anchor.setTo(0.5, 0.5);
     temp.enableBody = true;
-    temp.scale.setTo(0.05, 0.3);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(400, 450, 'test');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.05, 0.05);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(350, 350, 'testo');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.3, 0.05);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(450, 430, 'testo');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.3, 0.05);
-    walls.add(temp);
-
-    //ifbaownfawu9fhaweioaewiwh ownfp eana owuevioua wnaewuaibvprieawubroaiwubraobra
-    var diggle = 100;
-    //Test object
-    temp = game.add.sprite(300+diggle, 400-diggle-15, 'test');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.05, 0.3);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(400+diggle, 450-diggle+15, 'test');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.05, 0.3);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(350+diggle, 350-diggle-15, 'testo');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.3, 0.05);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(450+diggle, 430-diggle-15, 'testo');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.3, 0.05);
-    walls.add(temp);
-
-    //jifawieb aiuawp rhar  iabaiwbfweivrwaibraiwba
-    var noggle = 200;
-    //Test object
-    temp = game.add.sprite(300, 400-noggle, 'test');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.05, 0.3);
-    walls.add(temp);
-
-    //Test object
-    temp = game.add.sprite(350, 350-noggle, 'testo');
-    temp.anchor.setTo(0.5, 0.5);
-    temp.enableBody = true;
-    temp.scale.setTo(0.3, 0.05);
-    walls.add(temp);
+    temp.scale.setTo(widthScale, heightScale);
+    spriteGroup.add(temp);
 }
 
 function update() {
@@ -167,14 +88,28 @@ function update() {
         }
     }
 
-    if (areClose(player, warmhole1, 20)) {
-        move.pause();
-        player.position.x = warmhole2.position.x;
-        player.position.y = warmhole2.position.y;
-    }
+    wormholeJump(wormholes.children[0], wormholes.children[1]);
 
-    warmhole1.angle += 1;
-    warmhole2.angle += 1;
+    for (var i = 0; i < wormholes.children.length; i++) {
+        wormholes.children[i].angle += 1;
+    }
+}
+
+function wormholeJump(startHole, endHole) {
+    if (hasCollided(player, startHole, 20)) {
+        move.pause();
+        player.position.x = endHole.position.x;
+        player.position.y = endHole.position.y;
+    }
+}
+
+function didCollects(collect) {
+    relics.children[collect].kill();
+    relics.remove(relics.children[collect]);
+    if (goal - relics.children.length == goal) {
+        move = 0;
+        didCompleteLevel();
+    }
 }
 
 function helper() {
@@ -194,31 +129,26 @@ function resetGame() {
     move.pause();
     game.tweens.removeAll();
     move = game.add.tween(player);
+
     player.x = initialX;
     player.y = initialY;
-}
-
-function areClose(agent, objective, threshold)
-{
-    return Math.sqrt(Math.pow(objective.position.x-agent.position.x, 2)
-            + Math.pow(objective.position.y-agent.position.y, 2)) <= threshold;
-}
-
-function didCollects(collect) {
-    relics.children[collect].kill();
-    relics.remove(relics.children[collect]);
-    if (goal - relics.children.length == goal) {
-        move = 0;
-        didCompleteLevel();
-    }
+    player.angle = 0;
+    direction = 0;
 }
 
 function momeDirections(x, y) {
     move.pause();
     move = game.add.tween(player);
     var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    move.to({x: player.x+x*10, y: player.y+y*10}, time, Phaser.Easing.In);
+    xM = getXYFromDirection()[0];
+    yM =  getXYFromDirection()[1];
+    move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
     move.start();
 
     return time+500;
+}
+
+function rotatePlayer(clockwise) {
+    direction = mod(direction + clockwise, 4);
+    player.angle += clockwise*90;
 }
