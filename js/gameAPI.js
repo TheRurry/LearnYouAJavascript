@@ -68,6 +68,24 @@ function initApi(interpreter, scope)
     interpreter.createNativeFunction(wrapper));
 
     wrapper = function() {
+        return interpreter.createPrimitive(rotate(-1, function(finished){
+            if (!finished) canRun = false;
+            else canRun = true;
+        }));
+    };
+    interpreter.setProperty(scope, 'rotateLeft',
+    interpreter.createNativeFunction(wrapper));
+
+    wrapper = function() {
+        return interpreter.createPrimitive(rotate(1, function(finished){
+            if (!finished) canRun = false;
+            else canRun = true;
+        }));
+    };
+    interpreter.setProperty(scope, 'rotateRight',
+    interpreter.createNativeFunction(wrapper));
+
+    wrapper = function() {
         return interpreter.createPrimitive(player.x);
     };
     interpreter.setProperty(scope, 'playerX',
@@ -82,7 +100,7 @@ function initApi(interpreter, scope)
 
 function goForward(distance, callback) {
     distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(0, -distance);
+    var time = momeDirections(distance, distance);
     callback(false);
 
     setTimeout(callback, time, true);
@@ -116,6 +134,11 @@ function moveForward(distance, callback) {
 
 }
 
+function rotate(direction, callback) {
+    rotatePlayer(direction)
+    setTimeout(callback, 0, true);
+}
+
 function hasCollided(rect1, rect2) {
     if (rect1.x - rect1.width / 2 < rect2.x + rect2.width / 2 &&
         rect1.x + rect1.width / 2 > rect2.x - rect2.width / 2 &&
@@ -124,4 +147,3 @@ function hasCollided(rect1, rect2) {
         return true;
     }
 }
-

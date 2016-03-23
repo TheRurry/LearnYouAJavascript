@@ -22,6 +22,8 @@ var speed = 0.2;
 var initialX = 350;
 var initialY = 500;
 
+var direction = 0;
+
 function create() {
     // Background
     game.add.image(game.world.centerX, game.world.centerY, 'stars').anchor.set(0.5);
@@ -74,16 +76,49 @@ function resetGame() {
     move.pause();
     game.tweens.removeAll();
     move = game.add.tween(player);
+
     player.x = initialX;
     player.y = initialY;
+    player.angle = 0;
+    direction = 0;
 }
 
 function momeDirections(x, y) {
     move.pause();
     move = game.add.tween(player);
     var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    move.to({x: player.x+x*10, y: player.y+y*10}, time, Phaser.Easing.In);
+    var [xM, yM] = getXYFromDirection()
+    move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
     move.start();
 
     return time+500;
 }
+
+function rotatePlayer(clockwise) {
+    direction = mod(direction + clockwise, 4);
+    player.angle += clockwise*90;
+}
+
+function mod(a, b)
+{
+    var r = a % b;
+    return r < 0 ? r + b : r;
+}
+
+function getXYFromDirection() {
+    switch(direction) {
+        case 0:
+            return [0, -1];
+            break;
+        case 1:
+            return [1, 0];
+            break;
+        case 2:
+            return [0, 1];
+            break;
+        case 3:
+            return [-1, 0];
+            break;
+    }
+}
+
