@@ -87,7 +87,8 @@ function momeDirections(x, y) {
     move.pause();
     move = game.add.tween(player);
     var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    var [xM, yM] = getXYFromDirection()
+    xM = getXYFromDirection()[0];
+    yM =  getXYFromDirection()[1];
     move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
     move.start();
 
