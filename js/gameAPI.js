@@ -100,7 +100,7 @@ function initApi(interpreter, scope)
 
 function goForward(distance, callback) {
     distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(distance, distance, true);
+    var time = momeDirections(distance, distance, 1);
     callback(false);
 
     setTimeout(callback, time, true);
@@ -108,7 +108,7 @@ function goForward(distance, callback) {
 
 function goRight(distance, callback) {
     distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(distance, 0, false);
+    var time = momeDirections(-distance, -distance, 0);
     callback(false);
 
     setTimeout(callback, time, true);
@@ -116,7 +116,7 @@ function goRight(distance, callback) {
 
 function goLeft(distance, callback) {
     distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(-distance, 0, false);
+    var time = momeDirections(distance, distance, 0);
     callback(false);
 
     setTimeout(callback, time, true);
@@ -124,7 +124,7 @@ function goLeft(distance, callback) {
 
 function goBack(distance, callback) {
     distance = typeof distance !== 'undefined' ? distance : 5;
-    var time = momeDirections(-distance, -distance, true);
+    var time = momeDirections(-distance, -distance, 1);
     callback(false);
 
     setTimeout(callback, time, true);
