@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LearnJS</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <script type="text/javascript" src="js/levels/level4.js"></script>
+    <script type="text/javascript" src="js/acorn_interpreter.js"></script>
+    <script type="text/javascript" src="js/gameAPI.js"></script>
+    <script src="js/dialog/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/dialog/sweetalert.css">
+    <link rel = "stylesheet" type = "text/css" href = "assets/sidebar_style.css">
+</head>
+<body>
+<div class="pane-container">
+    <div class="pane-right">
+        <pre id="editor"></pre>
+    </div>
+        
+    <div class="pane-left">
+        <div id="gameUI"></div>
+
+        <div style="cursor:pointer;" onclick="helper()" class="helpButton"></div>
+        <div style="cursor:pointer;" onclick="run()" class="runButton"></div>
+        <a href="Home_Page.html" class="homeButton"></a>
+
+        <script type="text/javascript">
+
+            function run() {
+                runGame();
+            }
+            
+            function didCompleteLevel()
+            {
+                localStorage.code = ""
+                console.log("Level Complete!");
+                swal({ 
+                    title: "You've successfully completed level 1!", 
+                    text: "Do you want to go to the next one?",
+                    type: "success",   
+                    showCancelButton: false, 
+                    confirmButtonColor: "#663399",   
+                    confirmButtonText: "Yes, let's go!",   
+                    closeOnConfirm: true}, 
+                    function(){
+                        window.location.href="level4.html"
+                });
+            }
+
+            function didFailLevel()
+            {
+                localStorage.code = editor.getValue();
+                swal({ 
+                    title: "You didn't complete this level :(", 
+                    text: "You can do it, keep trying!!",
+                    type: "error",   
+                    showCancelButton: false, 
+                    confirmButtonColor: "#663399",   
+                    confirmButtonText: "Yes, let's try again!",   
+                    closeOnConfirm: false}, 
+                    function(){
+                        window.location.href="level4.html"
+                });
+            }
+        </script>
+    </div>
+</div>
+<script src="js/editor/ace.js" type="text/javascript"></script>
+<script src="js/editor/editctrl.js" type="text/javascript"></script>
+</body>
+</html>

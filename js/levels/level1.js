@@ -40,7 +40,7 @@ function create() {
     collectable.scale.setTo(0.07, 0.07);
 
     //Test object
-    test = game.add.sprite(150, 200, 'test');
+    test = game.add.sprite(300, 200, 'test');
     test.anchor.setTo(0.5, 0.5);
     test.enableBody = true;
     test.scale.setTo(0.05, 0.05);

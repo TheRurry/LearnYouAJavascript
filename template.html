@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LearnJS</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <script type="text/javascript" src="js/levels/level2.js"></script>
+    <script type="text/javascript" src="js/acorn_interpreter.js"></script>
+    <script type="text/javascript" src="js/gameAPI.js"></script>
+    <script src="js/dialog/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/dialog/sweetalert.css">
+    <link rel = "stylesheet" type = "text/css" href = "assets/sidebar_style.css">
+</head>
+<body>
+<div class="pane-container">
+    <div class="pane-right">
+        <pre id="editor"></pre>
+    </div>
+
+    <div class="container">
+        <div id="sidebar">
+            <ul>
+                <li><a href="#">Instructions</a>
+                    <ul>
+                        <li><a href="#">Press the home button to return to the home page. Press the run button to execute the code you have written. Press the help button to load up the tutorial for the level.</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Select lesson</a>
+                    <ul>
+                        <li><a href="level1.html">1. Getting Started!</a></li>
+                        <li><a href="level2.html">2. Avoiding Obstacles!</a></li>
+                        <li><a href="level3.html">3. Wormholes Ahead!</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Data types</a>
+                    <ul>
+                        <li><a href="#">Data comes in various <strong>types</strong></a></li>
+                        <li><a href="#">
+                            a. <strong>numbers</strong> are just quantities. You can do math with them.
+                            Addition (+), subtraction (-), multiplication (*) and division (/) can all be used in
+                            javascript <br><br>
+
+                            b. <strong>strings</strong> are sequences of characters enclosed in double quotes.
+                            These include letters, spaces and numbers <br><br>
+
+                            Examples of strings:<br>"Felix is silver" , "22", "Ranks?" <br><br>
+
+                            Examples of numbers (must be written without quotes, otherwise it's a string):<br>
+                            42, 69, 121<br><br>
+
+                            c. <strong>booleans</strong> are values which are either true or false<br><br>
+
+                            For example, comparing two numbers returns a true or false value:<br>64 > 24 is true<br>
+                            8 < 7 is false
+                        </a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Comparison operators</a>
+                    <ul>
+                        <li><a href="#">List of comparison operators</a></li>
+                        <li><a href="#">
+                            a. > greater than<br><br>
+
+                            b. < less than<br><br>
+
+                            c. <= less than or equal to<br><br>
+
+                            d. >= greater than or equal to<br><br>
+
+                            e. == equal to<br><br>
+
+                            f. != not equal to<br><br>
+
+                            These operators check to see whether a relation between 2 sets of data
+                            is true or false
+                        </a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">Conditional statements</a></li>
+
+                <li><a href="#">Variables</a></li>
+
+                <li><a href="#">Functions library</a>
+                    <ul>
+                        <li><a href="#">ScriptYouAJavascript inbuilt functions</a></li>
+                        <li><a href="#">goForward(d); <br> -move spaceship d units up</a></li>
+                        <li><a href="#">goBack(d); <br> -move spaceship d units down</a></li>
+                        <li><a href="#">goLeft(d); <br> -strafe left by d units</a></li>
+                        <li><a href="#">goRight(d); <br> -strafe right by d units</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Loops</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <a href="#" data-toggle=".container" id="sidebar-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>
+    $(document).ready(function() {
+      $("[data-toggle]").click(function() {
+        var toggle_el = $(this).data("toggle");
+        $(toggle_el).toggleClass("open-sidebar");
+      });
+
+        editor.setValue(localStorage.code)
+
+    });
+    </script>
+
+    <div class="pane-left">
+        <div id="gameUI"></div>
+
+        <div style="cursor:pointer;" onclick="helper()" class="helpButton"></div>
+        <div style="cursor:pointer;" onclick="run()" class="runButton"></div>
+        <a href="Home_Page.html" class="homeButton"></a>
+
+        <script type="text/javascript">
+            function run() {
+                runGame();
+            }
+
+            function didCompleteLevel()
+            {
+                localStorage.code = "";
+
+                console.log("Level Complete!");
+                swal({ 
+                    title: "You've successfully completed level 2!", 
+                    text: "Do you want to go to the next one?",
+                    type: "success",   
+                    showCancelButton: false, 
+                    confirmButtonColor: "#663399",   
+                    confirmButtonText: "Yes, let's go!",   
+                    closeOnConfirm: true}, 
+                    function(){
+                        window.location.href="level3.html"
+                });
+            }
+
+            function didFailLevel()
+            {
+                localStorage.code = editor.getValue();
+                swal({ 
+                    title: "You didn't complete this level :(", 
+                    text: "You can do it, keep trying!!",
+                    type: "error",   
+                    showCancelButton: false, 
+                    confirmButtonColor: "#663399",   
+                    confirmButtonText: "Yes, let's try again!",   
+                    closeOnConfirm: false}, 
+                    function(){
+                        window.location.href="level2.html"
+                });
+            }
+        </script>
+    </div>
+</div>
+<script src="js/editor/ace.js" type="text/javascript"></script>
+<script src="js/editor/editctrl.js" type="text/javascript"></script>
+</body>
+</html>
