@@ -83,12 +83,18 @@ function resetGame() {
     direction = 0;
 }
 
-function momeDirections(x, y) {
+function momeDirections(x, y, straight) {
     move.pause();
     move = game.add.tween(player);
     var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    xM = getXYFromDirection()[0];
-    yM =  getXYFromDirection()[1];
+    var xM = 1;
+    var yM = 1;
+
+    if (straight) {
+        xM = getXYFromDirection()[0];
+        yM =  getXYFromDirection()[1]; 
+    }
+
     move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
     move.start();
 
