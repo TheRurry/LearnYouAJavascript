@@ -51,7 +51,7 @@ function create() {
     for (var i = 0; i<walls.length; i++) {
         graphics.drawRect(walls[i][0], walls[i][1], walls[i][2], walls[i][3]);
     }
-    
+
     graphics.endFill();
 }
 
@@ -64,7 +64,7 @@ function update() {
     }
 
     for (var i = 0; i<walls.length; i++) {
-        if (player.position.x>walls[i][0] && player.position.x<walls[i][0]+walls[i][2] && 
+        if (player.position.x>walls[i][0] && player.position.x<walls[i][0]+walls[i][2] &&
             player.position.y>walls[i][1] && player.position.y<walls[i][1]+walls[i][3]) {
                 touchedWall();
         }
@@ -111,12 +111,30 @@ function resetGame() {
     player.y = initialY;
 }
 
-function momeDirections(x, y) {
+function momeDirections(x, y, straight) {
     move.pause();
     move = game.add.tween(player);
     var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    move.to({x: player.x+x*10, y: player.y+y*10}, time, Phaser.Easing.In);
+    var xM = 0;
+    var yM = 0;
+
+    if (straight === 1) {
+        xM = getXYFromDirection()[0];
+        yM =  getXYFromDirection()[1];
+    }
+    else {
+        console.log("not staright")
+        yM =  -getXYFromDirection()[0];
+        xM =  getXYFromDirection()[1];
+    }
+
+    move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
     move.start();
 
     return time+500;
+}
+
+function rotatePlayer(clockwise) {
+    direction = mod(direction + clockwise, 4);
+    player.angle += clockwise*90;
 }
