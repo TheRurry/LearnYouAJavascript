@@ -130,10 +130,6 @@ function goBack(distance, callback) {
     setTimeout(callback, time, true);
 }
 
-function moveForward(distance, callback) {
-
-}
-
 function rotate(direction, callback) {
     rotatePlayer(direction)
     setTimeout(callback, 0, true);

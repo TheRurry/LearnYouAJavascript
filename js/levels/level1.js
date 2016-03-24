@@ -7,13 +7,12 @@ function preload() {
     game.load.image('collectable', 'js/levels/assets/collectable2.png');
     game.load.image('planet', 'js/levels/assets/planet1.png');
     game.load.image('stars', 'js/levels/assets/starmap.png');
-    game.load.image('test', 'js/levels/assets/obstacle.png');
 }
 var player;
 var move;
 var test;
 
-var collectable;
+var relics;
 
 var completed = 0;
 var goal = 1; //change this to amount of collectables in level.
@@ -35,17 +34,16 @@ function create() {
     player.scale.setTo(0.07, 0.07);
     move = game.add.tween(player);
 
-    //Collectable
-    collectable = game.add.sprite(initialX, 100, 'collectable');
-    collectable.anchor.setTo(0.5, 0.5);
-    collectable.enableBody = true;
-    collectable.scale.setTo(0.07, 0.07);
+    relics = game.add.group();
+    newSprite(initialX, 100, 0.07, 0.07, 'collectable', relics);
+}
 
-    //Test object
-    test = game.add.sprite(300, 200, 'test');
-    test.anchor.setTo(0.5, 0.5);
-    test.enableBody = true;
-    test.scale.setTo(0.05, 0.05);
+function newSprite(sprX, sprY, widthScale, heightScale, image, spriteGroup) {
+    temp = game.add.sprite(sprX, sprY, image);
+    temp.anchor.setTo(0.5, 0.5);
+    temp.enableBody = true;
+    temp.scale.setTo(widthScale, heightScale);
+    spriteGroup.add(temp);
 }
 
 function update() {
@@ -53,9 +51,19 @@ function update() {
         didFailLevel();
     }
 
-    if (hasCollided(player, collectable)) {
-        completed++;
-        didCollect(collectable, move, completed, goal);
+    for (var i = 0; i < relics.children.length; i++) {
+        if (hasCollided(player, relics.children[i])) {
+            didCollects(i);
+        }
+    }
+}
+
+function didCollects(collect) {
+    relics.children[collect].kill();
+    relics.remove(relics.children[collect]);
+    if (goal - relics.children.length == goal) {
+        move.pause();
+        didCompleteLevel();
     }
 }
 
@@ -92,12 +100,12 @@ function momeDirections(x, y, straight) {
 
     if (straight === 1) {
         xM = getXYFromDirection()[0];
-        yM =  getXYFromDirection()[1]; 
-    } 
+        yM =  getXYFromDirection()[1];
+    }
     else {
         console.log("not staright")
         yM =  -getXYFromDirection()[0];
-        xM =  getXYFromDirection()[1]; 
+        xM =  getXYFromDirection()[1];
     }
 
     move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
