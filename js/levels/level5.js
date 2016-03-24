@@ -187,21 +187,13 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson x",
+        title: "Lesson 5",
         text: "Many programming languages have loops. Loops help you to execute the same section of code multple times without having to repeat it. There are 3 loops you will learn about. The while-loop (when unsure about number of repetitions), the for-loop (when you are sure), and the do-while-loop (when you want the code to execute atleast once).",
         type: "info",
         showCancelButton: false,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Got it!",
         closeOnConfirm: true }, null);
-}
-
-function resetGame() {
-    move.pause();
-    game.tweens.removeAll();
-    move = game.add.tween(player);
-    player.x = initialX;
-    player.y = initialY;
 }
 
 function areClose(agent, objective, threshold)
@@ -219,12 +211,41 @@ function didCollects(collect) {
   }
 }
 
-function momeDirections(x, y) {
+function resetGame() {
+    move.pause();
+    game.tweens.removeAll();
+    move = game.add.tween(player);
+
+    player.x = initialX;
+    player.y = initialY;
+    player.angle = 0;
+    direction = 0;
+}
+
+function momeDirections(x, y, straight) {
     move.pause();
     move = game.add.tween(player);
     var time = (Math.sqrt(x*x+y*y)*10)/speed;
-    move.to({x: player.x+x*10, y: player.y+y*10}, time, Phaser.Easing.In);
+    var xM = 0;
+    var yM = 0;
+
+    if (straight === 1) {
+        xM = getXYFromDirection()[0];
+        yM =  getXYFromDirection()[1];
+    }
+    else {
+        console.log("not staright")
+        yM =  -getXYFromDirection()[0];
+        xM =  getXYFromDirection()[1];
+    }
+
+    move.to({x: player.x+x*10*xM, y: player.y+y*10*yM}, time, Phaser.Easing.In);
     move.start();
 
     return time+500;
+}
+
+function rotatePlayer(clockwise) {
+    direction = mod(direction + clockwise, 4);
+    player.angle += clockwise*90;
 }

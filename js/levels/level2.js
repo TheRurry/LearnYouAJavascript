@@ -1,73 +1,93 @@
+//test is just a little hint of how to add stuff
+
 var game = new Phaser.Game(700, 600, Phaser.AUTO, 'gameUI', { preload: preload, create: create, update: update });
 
 function preload() {
     game.load.image('spaceship', 'js/levels/assets/player_ship.png');
     game.load.image('collectable', 'js/levels/assets/collectable2.png');
     game.load.image('planet', 'js/levels/assets/planet1.png');
-    game.load.image('stars', 'js/levels/assets/starmap.png')
-
+    game.load.image('stars', 'js/levels/assets/starmap.png');
+    game.load.image('test', 'js/levels/assets/obs.png');
+    game.load.image('testh', 'js/levels/assets/obsh.png');
 }
-var player
+var player;
 var move;
 
-var collectable = 0;
+var test0;
+var test1;
+var test2;
+var test3;
+var test4;
+var test5;
+var test6;
+
+var collectable;
+
+var completed = 0;
+var goal = 1; //change this to amount of collectables in level.
 
 var speed = 0.2;
-
-var initialX = 340;
-var initialY = 530;
-
-var wallWidth = 6;
-var wall1 = [260, 370, wallWidth, 300]
-var wall2 = [260, 370, 200, wallWidth]
-var wall3 = [420, 100, 230, wallWidth]
-var walls = [wall1, wall2, wall3]
+var initialX = 350;
+var initialY = 500;
 
 function create() {
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
     // Background
     game.add.image(game.world.centerX, game.world.centerY, 'stars').anchor.set(0.5);
     game.add.image(250, 300, 'planet').anchor.set(0.5);
 
-    // The player and its settings
+    // Player
     player = game.add.sprite(initialX, initialY, 'spaceship');
     player.anchor.setTo(0.5, 0.5);
     player.scale.setTo(0.07, 0.07);
-
-    nextX = player.x;
-    nextY = player.y;
-
     move = game.add.tween(player);
 
-    collectable = game.add.sprite(game.world.width-150, 50, 'collectable');
-    collectable.enableBody = true;
+    //Collectable
+    collectable = game.add.sprite(150, 100, 'collectable');
     collectable.anchor.setTo(0.5, 0.5);
+    collectable.enableBody = true;
     collectable.scale.setTo(0.07, 0.07);
 
-    var graphics = game.add.graphics(0, 0);
-    graphics.beginFill(0xFFFFFF);
+    //Test object
+    walls = game.add.group();
+    newWallh(500, 400, 1.5, 0.05);
+    newWallh(150, 150, 1.05, 0.05);
 
-    for (var i = 0; i<walls.length; i++) {
-        graphics.drawRect(walls[i][0], walls[i][1], walls[i][2], walls[i][3]);
-    }
+}
 
-    graphics.endFill();
+function newWall(wallX, wallY, widthScale, heightScale) {
+    temp = game.add.sprite(wallX, wallY, 'test');
+    temp.anchor.setTo(0.5, 0.5);
+    temp.enableBody = true;
+    temp.scale.setTo(widthScale, heightScale);
+    walls.add(temp);
+}
+
+function newWallh(wallX, wallY, widthScale, heightScale) {
+    temp = game.add.sprite(wallX, wallY, 'testh');
+    temp.anchor.setTo(0.5, 0.5);
+    temp.enableBody = true;
+    temp.scale.setTo(widthScale, heightScale);
+    walls.add(temp);
 }
 
 function update() {
+
     if (player.x < 0 || player.x > game.world.width || player.y < 0 || player.y > game.world.height) {
+        move.pause();
         didFailLevel();
     }
-    if (areClose(player, collectable, 20) && completed++ == 0) {
-        didCollect();
+
+    for (var i = 0; i < walls.children.length; i++) {
+    if (hasCollided(player, walls.children[i])) {
+        didFailLevel();
+        move.pause();
+      }
     }
 
-    for (var i = 0; i<walls.length; i++) {
-        if (player.position.x>walls[i][0] && player.position.x<walls[i][0]+walls[i][2] &&
-            player.position.y>walls[i][1] && player.position.y<walls[i][1]+walls[i][3]) {
-                touchedWall();
-        }
+    if (hasCollided(player, collectable)) {
+        completed++;
+        didCollect(collectable, move, completed, goal);
+        move.pause();
     }
 }
 
@@ -84,31 +104,15 @@ function helper() {
         closeOnConfirm: true }, null);
 }
 
-function didCollect()
-{
-    collectable.kill();
-    didCompleteLevel();
-    move.pause();
-}
-
-function touchedWall()
-{
-    didFailLevel();
-    move.pause();
-}
-
-function areClose(agent, objective, threshold)
-{
-    return Math.sqrt(Math.pow(objective.position.x-agent.position.x, 2)
-    + Math.pow(objective.position.y-agent.position.y, 2)) <= threshold;
-}
-
 function resetGame() {
     move.pause();
     game.tweens.removeAll();
     move = game.add.tween(player);
+
     player.x = initialX;
     player.y = initialY;
+    player.angle = 0;
+    direction = 0;
 }
 
 function momeDirections(x, y, straight) {

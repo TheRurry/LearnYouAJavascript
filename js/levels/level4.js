@@ -116,7 +116,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson x",
+        title: "Lesson 4",
         text: "Many programming languages have loops. Loops help you to execute the same section of code multple times without having to repeat it. There are 3 loops you will learn about. The while-loop (when unsure about number of repetitions), the for-loop (when you are sure), and the do-while-loop (when you want the code to execute atleast once).",
         type: "info",
         showCancelButton: false,

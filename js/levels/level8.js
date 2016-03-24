@@ -99,7 +99,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson 3",
+        title: "Lesson 8",
         text: "This level could be done by altering the move directions within the recursive function. Why don't you give it a go?",
         type: "info",
         showCancelButton: false,

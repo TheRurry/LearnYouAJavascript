@@ -110,7 +110,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson 1",
+        title: "Lesson 6",
         text: "Use move functions to go through the maze, or can you find a better way? You Can use this to define your own function: var yourFunction = function();. A Recursive function is a function that calls back on itself.",
         type: "info",
         showCancelButton: false,

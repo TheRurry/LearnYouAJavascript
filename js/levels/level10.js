@@ -98,7 +98,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson 5",
+        title: "Lesson 10",
         text: "Can you do this level by modifying the move functions?",
         type: "info",
         showCancelButton: false,

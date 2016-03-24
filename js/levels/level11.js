@@ -98,7 +98,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson 6",
+        title: "Lesson 11",
         text: "Can you do this level by modifying multipliers on the input parameters?",
         type: "info",
         showCancelButton: false,

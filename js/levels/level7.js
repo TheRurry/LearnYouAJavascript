@@ -114,7 +114,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson 2",
+        title: "Lesson 7",
         text: "Can you do this level while only making minimal changes to the answer to the previous level?",
         type: "info",
         showCancelButton: false,

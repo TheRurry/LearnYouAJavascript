@@ -103,7 +103,7 @@ function helper() {
     console.log("Tutorial Loaded");
 
     swal({
-        title: "Lesson 7 Challenge",
+        title: "Lesson 12 Challenge",
         text: "This is a challenge level. You will need to use a mixture of techniques from previous levels.",
         type: "info",
         showCancelButton: false,
