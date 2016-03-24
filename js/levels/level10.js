@@ -12,6 +12,7 @@ function preload() {
 }
 var player;
 var move;
+var relics;
 
 var test0;
 var test1;
@@ -30,6 +31,23 @@ var speed = 0.2;
 var initialX = 350;
 var initialY = 500;
 
+function newSprite(sprX, sprY, widthScale, heightScale, image, spriteGroup) {
+    temp = game.add.sprite(sprX, sprY, image);
+    temp.anchor.setTo(0.5, 0.5);
+    temp.enableBody = true;
+    temp.scale.setTo(widthScale, heightScale);
+    spriteGroup.add(temp);
+}
+
+function didCollects(collect) {
+   relics.children[collect].kill();
+   relics.remove(relics.children[collect]);
+   if (goal - relics.children.length == goal) {
+       move.pause();
+       didCompleteLevel();
+   }
+}
+
 function create() {
     // Background
     game.add.image(game.world.centerX, game.world.centerY, 'stars').anchor.set(0.5);
@@ -42,10 +60,8 @@ function create() {
     move = game.add.tween(player);
 
     //Collectable
-    collectable = game.add.sprite(150, 80, 'collectable');
-    collectable.anchor.setTo(0.5, 0.5);
-    collectable.enableBody = true;
-    collectable.scale.setTo(0.07, 0.07);
+    relics = game.add.group();
+    newSprite(150, 80, 0.07, 0.07, 'collectable', relics);
 
     //Test object
     walls = game.add.group();
@@ -87,10 +103,10 @@ function update() {
     }
 }
 
-    if (hasCollided(player, collectable)) {
-        completed++;
-        didCollect(collectable, move, completed, goal);
-        move.pause();
+for (var i = 0; i < relics.children.length; i++) {
+        if (hasCollided(player, relics.children[i])) {
+            didCollects(i);
+        }
     }
 }
 
