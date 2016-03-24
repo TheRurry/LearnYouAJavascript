@@ -78,12 +78,13 @@ function newWallh(wallX, wallY, widthScale, heightScale) {
 }
 
 function didCollects(collect) {
-    relics.children[collect].kill();
-    relics.remove(relics.children[collect]);
-    if (goal - relics.children.length == goal) {
-        move = 0;
-        didCompleteLevel();
-    }
+   relics.children[collect].kill();
+   relics.remove(relics.children[collect]);
+   if (goal - relics.children.length == goal) {
+       move.pause();
+       move = 0;
+       didCompleteLevel();
+   }
 }
 
 function update() {

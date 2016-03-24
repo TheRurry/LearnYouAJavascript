@@ -108,6 +108,7 @@ function didCollects(collect) {
    relics.remove(relics.children[collect]);
    if (goal - relics.children.length == goal) {
        move.pause();
+       move = 0;
        didCompleteLevel();
    }
 }

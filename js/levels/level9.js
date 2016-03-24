@@ -45,9 +45,11 @@ function didCollects(collect) {
    relics.remove(relics.children[collect]);
    if (goal - relics.children.length == goal) {
        move.pause();
+       move = 0;
        didCompleteLevel();
    }
 }
+
 function create() {
     // Background
     game.add.image(game.world.centerX, game.world.centerY, 'stars').anchor.set(0.5);
