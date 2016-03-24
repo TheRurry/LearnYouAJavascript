@@ -31,6 +31,16 @@
                     <li><a href="level1.html">1. Getting Started!</a></li>
                     <li><a href="level2.html">2. Avoiding Obstacles!</a></li>
                     <li><a href="level3.html">3. Wormholes Ahead!</a></li>
+                    <li><a href="level4.html">4. jiggy</a></li>
+                    <li><a href="level5.html">5. jar!</a></li>
+                    <li><a href="level6.html">6. jar!</a></li>
+                    <li><a href="level7.html">7. doo!</a></li>
+                    <li><a href="level8.html">8. dur!</a></li>
+                    <li><a href="level9.html">9. dur!</a></li>
+                    <li><a href="level10.html">10. dur!</a></li>
+                    <li><a href="level11.html">11. dee!</a></li>
+                    <li><a href="level12.html">12. Carl!</a></li>
+                    <li><a href="level13.html">13. Poppa!</a></li>
                 </ul>
             </li>
 
@@ -80,9 +90,59 @@
                 </ul>
             </li>
 
-            <li><a href="#">Conditional statements</a></li>
+            <li><a href="#">Conditional statements</a>
+                <ul>
+                    <li><a href="#"> Conditional statements incorporate <strong>decision-making</strong> in to a program.</a></li>
+                    <li><a href="#">
+                      if-statements allow your program to make decisions for itself
+                      i.e. whether or not the spaceship should move forward if an asteroid is blocking it. <br><br>
 
-            <li><a href="#">Variables</a></li>
+                      To write in an if statement you type: <br>
+                      if (condition) { <br>
+                        <span style="margin-left:2em">//enter your code here...</span><br>
+                      } <br><br>
+
+                      An if-statement is used to check whether a condition is true.
+                      If the condition is true then the code runs, if it is false then the code within
+                      the curly braces does not run.
+
+                    </a></li>
+                    <li><a href="#">
+                      You also have else statements. else statements execute a section of code for when the condition
+                      in the if-statement is not true. <br> <br>
+
+                      Example of using if-else: <br>
+                      if(asteroidBlock() == true) {
+                        	<span style="margin-left:2em">shoot(); </span><br>
+                          <span style="margin-left:2em">forward(4); </span><br>
+                          <span style="margin-left:1em">} else { </span><br>
+                          <span style="margin-left:2em">forward(4); </span><br>
+                        } <br><br>
+
+                      //This will check for an asteroid infront of the ship. <strong>if</strong> there is,
+                      then shoot it and move forward, <strong>else</strong> just move forward
+                    </a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Variables</a>
+                <ul>
+                    <li><a href="#"> Variables allow you to <strong>store and use data</strong>.</a></li>
+                    <li><a href="#">
+                      To declare a variable, the following format is used: <br> var variableName = data <br>
+                      e.g var distance = 5 <br><br>
+
+                      Variables can also be used as inputs for functions.<br><br>
+
+                      Example of using a variable as an input parameter for a function: <br>
+                      var distance = 4; <br>
+                      forward (distance); <br>
+                      right (distance + 2); <br><br>
+                      //This will move the spaceship 4 units forward and 6 units to the right.
+
+                    </a></li>
+                </ul>
+            </li>
 
             <li><a href="#">Functions library</a>
                 <ul>
@@ -116,7 +176,7 @@
       editor.setValue(localStorage.code)
     });
     </script>
-        
+
     <div class="pane-left">
         <div id="gameUI"></div>
 
@@ -129,19 +189,19 @@
             function run() {
                 runGame();
             }
-            
+
             function didCompleteLevel()
             {
                 localStorage.code = ""
                 console.log("Level Complete!");
-                swal({ 
-                    title: "You've successfully completed level 1!", 
+                swal({
+                    title: "You've successfully completed level 1!",
                     text: "Do you want to go to the next one?",
-                    type: "success",   
-                    showCancelButton: false, 
-                    confirmButtonColor: "#663399",   
-                    confirmButtonText: "Yes, let's go!",   
-                    closeOnConfirm: true}, 
+                    type: "success",
+                    showCancelButton: false,
+                    confirmButtonColor: "#663399",
+                    confirmButtonText: "Yes, let's go!",
+                    closeOnConfirm: true},
                     function(){
                         window.location.href="level2.html"
                 });
@@ -150,14 +210,14 @@
             function didFailLevel()
             {
                 localStorage.code = editor.getValue();
-                swal({ 
-                    title: "You didn't complete this level :(", 
+                swal({
+                    title: "You didn't complete this level :(",
                     text: "You can do it, keep trying!!",
-                    type: "error",   
-                    showCancelButton: false, 
-                    confirmButtonColor: "#663399",   
-                    confirmButtonText: "Yes, let's try again!",   
-                    closeOnConfirm: false}, 
+                    type: "error",
+                    showCancelButton: false,
+                    confirmButtonColor: "#663399",
+                    confirmButtonText: "Yes, let's try again!",
+                    closeOnConfirm: false},
                     function(){
                         window.location.href="level1.html"
                 });
